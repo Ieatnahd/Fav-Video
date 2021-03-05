@@ -1,0 +1,16 @@
+<div class="title">
+  <h2><%= @user.name %></h2>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+    <h5>件の投稿</h5>
+  </div>
+  <div class="col-sm-8">
+    <ul class="nav nav-tabs nab-justified mb-3">
+      <li class="nav-item"><a href="#" class="nav-link">自分の投稿</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">いいねをした投稿</a></li>
+    </ul>
+    <%= link_to 'ユーザー一覧に戻る', users_path, class:"btn btn-primary btn-block" %>
+  </div>
+</div>
