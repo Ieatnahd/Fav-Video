@@ -53,3 +53,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari'
 gem 'google-api-client', '0.9.20', require: 'google/apis/youtube_v3'
+group :production do
+  gem 'pg', '>=0.18', '<2.0'
+end
