@@ -7,11 +7,14 @@
 <div class="row">
   <div class="col-sm-4 text-center">
     <%= link_to '記事一覧', items_path, class: 'title' %>
+    <p>投稿された記事一覧はこちら</p>
   </div>
   <div class="col-sm-4 text-center">
-    <%= link_to 'ユーザー一覧', users_path %>
+    <%= link_to 'ユーザー一覧', users_path, class: 'title' %>
+    <p>登録されたユーザー一覧はこちら</p>
   </div>
   <div class="col-sm-4 text-center">
-    <%= link_to '新しい記事を投稿する', new_item_path %>
+    <%= link_to '新しい記事を投稿する', new_item_path, class: 'title' %>
+    <p>新しい記事を投稿するにはこちら</p>
   </div>
 </div>
