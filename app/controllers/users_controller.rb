@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:index, :show, :edit]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @items = @user.items.order(id: :desc).page(params[:page])
+    counts(@user)
   end
   
   def new
@@ -24,6 +26,34 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = 'ユーザーのパスワードを変更しました。'
+      redirect_to @user
+    else
+      flash.now[:danger] = 'ユーザのパスワードの変更に失敗しました。'
+      render :new
+    end
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    
+    flash[:success] = 'ユーザーは削除されました。'
+    redirect_to root_url
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.likes.page(params[:page])
+    counts(@user)
+  end
   private
 
   def user_params

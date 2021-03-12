@@ -1,0 +1,11 @@
+<% if current_user.likes?(item) %>
+  <%= form_with(model: current_user.favorites.find_by(item_id: item.id), local: true, method: :delete) do |f| %>
+    <%= hidden_field_tag :item_id, item.id %>
+    <%= f.submit 'いいねを取り消す', class: 'btn btn-danger btn-block' %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+    <%= hidden_field_tag :item_id, item.id %>
+    <%= f.submit 'いいねする', class: 'btn btn-primary btn-block' %>
+  <% end %>
+<% end %>

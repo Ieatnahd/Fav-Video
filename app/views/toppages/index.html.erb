@@ -5,7 +5,13 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-4 text-center">items</div>
-  <div class="col-sm-4 text-center">users</div>
-  <div class="col-sm-4 text-center">new</div>
+  <div class="col-sm-4 text-center">
+    <%= link_to '記事一覧', items_path %>
+  </div>
+  <div class="col-sm-4 text-center">
+    <%= link_to 'ユーザー一覧', users_path %>
+  </div>
+  <div class="col-sm-4 text-center">
+    <%= link_to '新しい記事を投稿する', new_item_path %>
+  </div>
 </div>

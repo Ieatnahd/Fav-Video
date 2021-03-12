@@ -1,0 +1,21 @@
+<div class="text-center">
+  <h1>新規ユーザー登録</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+    
+      <div class="form-group">
+        <%= f.label :password, '新しいパスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :password_confirmation, '新しいパスワード(確認用)' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit '変更する', data: { confirm: '本当に変更して良いですか？'}, class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="text-center mb-4">
+  <h1>投稿された記事一覧</h1>
+</div>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2">
+    <% if @items.any? %>
+      <%= render 'items', items: @items %>
+    <% end %>
+  </div>
+</div>

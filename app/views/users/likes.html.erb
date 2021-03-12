@@ -4,14 +4,14 @@
 <div class="row">
   <div class="col-sm-4">
     <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
-    <h5><%= @count_items %>件の投稿</h5>
+    <h5><%= @count_likes %>件の投稿</h5>
   </div>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nab-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">自分の投稿</a></li>
       <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">いいねをした投稿</a></li>
     </ul>
-    <%= render 'items/items', items: @items %>
+    <%= render 'items/items', items: @likes %>
     <%= link_to 'ユーザー一覧に戻る。', users_path, class:"btn btn-info" %>
     <%= link_to 'パスワードを変更する。', edit_user_path, class:"btn btn-success" %>
     <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除して良いですか？'}, class:"btn btn-danger" %>    

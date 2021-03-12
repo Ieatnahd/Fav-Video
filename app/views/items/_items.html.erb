@@ -1,0 +1,17 @@
+<ul class="list-unstyled">
+  <% items.each do |item| %>
+    <li class="media border-bottom">
+      <img  src="<%= item.thumbnail_url %>" alt="" height=150>
+      <div class="media-body">
+        <div>
+          <%= item.title %>
+        </div>
+        <div>
+          投稿者：<%= item.user.name %>
+        </div>
+        <%= link_to '詳細を見る', item_path(item), class: 'btn btn-primary' %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<% paginate items %>
