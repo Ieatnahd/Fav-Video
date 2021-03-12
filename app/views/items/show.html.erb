@@ -9,7 +9,7 @@
     <div class="col-sm-6">
       <%= @item.channel %>
     </div>
-    <a href='https://www.youtube.com/watch?v=<%= @item.video_id %>' target="_blank"><img src="<%= @item.thumbnail_url %>" width="640"></a>
+    <a href='https://www.youtube.com/watch?v=<%= @item.video_id %>' target="_blank"><img src="<%= @item.thumbnail_url %>" width="640" alt=""></a>
     <h4>お勧めする理由</h4>
     <%= @item.content %>
     <% if current_user == @item.user %>

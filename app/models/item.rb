@@ -7,5 +7,5 @@ class Item < ApplicationRecord
   validates :content, presence: true, length: { maximum: 255 }
   validates :thumbnail_url, presence: true, length: { maximum: 255 }
   
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 end
