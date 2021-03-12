@@ -48,7 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: postgreaql
+  adapter: postgresql
   encoding: unicode
   pool: 5
   database: fav-video_production
