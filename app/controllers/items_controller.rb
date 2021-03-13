@@ -24,7 +24,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id])
+    if @item == nil
+      flash[:danger] = 'その記事は存在しません'
+      redirect_to items_path
+    else
+    end
   end
 
   def new

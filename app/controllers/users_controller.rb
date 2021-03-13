@@ -6,9 +6,14 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @items = @user.items.order(id: :desc).page(params[:page])
-    counts(@user)
+    @user = User.find_by(id: params[:id]) 
+    if @user == nil
+      flash[:danger] = 'そのユーザーは存在しません'
+      redirect_to users_path
+    else
+      @items = @user.items.order(id: :desc).page(params[:page])
+      counts(@user)
+    end
   end
   
   def new

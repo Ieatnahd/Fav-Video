@@ -2,20 +2,28 @@
   <h1><%= @item.user.name %>さんの記事</h1>
 </div>
 <div class="row">
-  <div class="col-sm-8 offset-sm-2 row">
-    <div class="col-sm-6">
-      <%= @item.title %>
-    </div>
-    <div class="col-sm-6">
-      <%= @item.channel %>
+  <div class="col-sm-8 offset-sm-2">
+    <div class="row">
+      <div class="col-sm-6">
+        <%= @item.title %>
+      </div>
+      <div class="col-sm-6">
+        <%= @item.channel %>
+      </div>
     </div>
     <a href='https://www.youtube.com/watch?v=<%= @item.video_id %>' target="_blank"><img src="<%= @item.thumbnail_url %>" width="640" alt=""></a>
-    <h4>お勧めする理由</h4>
-    <%= @item.content %>
-    <% if current_user == @item.user %>
-      <%= link_to 'この投稿を削除する', @item, method: :delete, data: { confirm: '本当に削除して良いですか？' }, class: 'btn btn-danger' %>
-    <% end %>
-    <%= render 'favorites/favorite_button', item: @item %>
-    <%= link_to '記事一覧に戻る。', items_path, class:"btn btn-info" %>
+    <div class="block">
+      <h4>お勧めする理由</h4>
+      <%= @item.content %>
+    </div>
+    <div class="row">
+      <% if current_user == @item.user %>
+        <%= link_to 'この投稿を削除する', @item, method: :delete, data: { confirm: '本当に削除して良いですか？' }, class: 'btn btn-danger' %>
+      <% end %>
+      <%= render 'favorites/favorite_button', item: @item %>
+      <div class="text-right">
+        <%= link_to '記事一覧に戻る。', items_path, class:"btn btn-info" %>
+      </div>
+    </div>
   </div>
 </div>
