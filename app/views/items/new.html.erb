@@ -6,8 +6,8 @@
     <%= form_with(url: items_path, scope: :video, local: true) do |f| %>
     <%= render 'layouts/error_messages', model: @item %>
       <div class="form-group">
-        <%= f.label :url, 'Youtubeの動画のId(https://www.youtube.com/watch?v=〇〇〇URLの中の「〇〇〇」部分を入力してください。)ID以外のものは張らないようにしてください。' %>
-        <%= f.text_field :url, class: 'form-control' %>
+        <%= f.label :input_id, 'Youtubeの動画のId(https://www.youtube.com/watch?v=〇〇〇URLの中の「〇〇〇」部分を入力してください。)ID以外のものは張らないようにしてください。' %>
+        <%= f.text_field :input_id, class: 'form-control' %>
       </div>
       
       <div class="form-group">

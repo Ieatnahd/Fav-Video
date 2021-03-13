@@ -37,8 +37,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.build(content: params[:video][:content], url: params[:video][:url])
-    youtube_data = find_videos(params[:video][:url])
+    @item = current_user.items.build(content: params[:video][:content], input_id: params[:video][:input_id])
+    youtube_data = find_videos(params[:video][:input_id])
     if youtube_data == nil
       flash[:danger] = 'そのIDの動画はありません。'
       render :new and return
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
         @item.thumbnail_url = snippet.thumbnails.default.url
       end
     end
-    if @item.url != @item.video_id
+    if @item.input_id != @item.video_id
       @item.destroy
       flash[:danger] = 'そのIDの動画はありません。'
       render :new and return
