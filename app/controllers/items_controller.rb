@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.items.build(content: params[:video][:content])
+    @item = current_user.items.build(content: params[:video][:content], url: params[:video][:url])
     youtube_data = find_videos(params[:video][:url])
     youtube_data.items.each do |item|
       snippet = item.snippet

@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit]
-  before_action :require_current_user, only: [:edit]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -29,6 +28,9 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to root_path
+    end
   end
 
   def update
@@ -38,7 +40,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:danger] = 'ユーザのパスワードの変更に失敗しました。'
-      render :new
+      render :edit
     end
   end
   
