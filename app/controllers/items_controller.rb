@@ -39,12 +39,17 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.build(content: params[:video][:content], url: params[:video][:url])
     youtube_data = find_videos(params[:video][:url])
-    youtube_data.items.each do |item|
-      snippet = item.snippet
-      @item.video_id = item.id.video_id
-      @item.title = snippet.title
-      @item.channel = snippet.channel_title
-      @item.thumbnail_url = snippet.thumbnails.default.url
+    if youtube_data == nil
+      flash[:danger] = 'そのIDの動画はありません。'
+      render :new
+    else
+      youtube_data.items.each do |item|
+        snippet = item.snippet
+        @item.video_id = item.id.video_id
+        @item.title = snippet.title
+        @item.channel = snippet.channel_title
+        @item.thumbnail_url = snippet.thumbnails.default.url
+      end
     end
     if @item.save
       flash[:success] = '投稿に成功しました。'

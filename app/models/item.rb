@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :channel, presence: true, length: { maximum: 255 }
   validates :content, presence: true, length: { maximum: 255 }
   validates :thumbnail_url, presence: true, length: { maximum: 255 }
-  validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
+  validates :url, presence: true
   
   has_many :favorites, dependent: :destroy
 end
