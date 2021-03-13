@@ -6,7 +6,7 @@
     <%= form_with(url: items_path, scope: :video, local: true) do |f| %>
     <%= render 'layouts/error_messages', model: @item %>
       <div class="form-group">
-        <%= f.label :url, '動画のURL' %>
+        <%= f.label :url, 'Youtubeの動画のURL' %>
         <%= f.text_field :url, class: 'form-control' %>
       </div>
       
