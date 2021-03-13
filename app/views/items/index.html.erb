@@ -6,5 +6,6 @@
     <% if @items.any? %>
       <%= render 'items', items: @items %>
     <% end %>
+    <%= link_to '新しい記事を投稿する', new_item_path, class: 'btn btn-info' %>
   </div>
 </div>
