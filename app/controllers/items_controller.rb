@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
       q: keyword,
       type: 'video',
       max_results: 1,
-      order: :date,
+      order: :relevance,
       page_token: next_page_token,
       published_before: before.iso8601
     }
