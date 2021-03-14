@@ -13,7 +13,9 @@
     </ul>
     <%= render 'items/items', items: @items %>
     <%= link_to 'ユーザー一覧に戻る。', users_path, class:"btn btn-info" %>
-    <%= link_to 'パスワードを変更する。', edit_user_path, class:"btn btn-success" %>
-    <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除して良いですか？'}, class:"btn btn-danger" %>    
+    <% if @user == current_user %>
+      <%= link_to 'パスワードを変更する。', edit_user_path, class:"btn btn-success" %>
+      <%= link_to 'アカウントを削除する', @user, method: :delete, data: { confirm: '本当に削除して良いですか？'}, class:"btn btn-danger" %>  
+    <% end %>
   </div>
 </div>
